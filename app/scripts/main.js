@@ -27,7 +27,9 @@ require.config({
 });
 
 require([
-    'backbone'
-], function (Backbone) {
+    'backbone',
+    'routes/initial-router'
+], function (Backbone, Router) {
+    new Router();
     Backbone.history.start();
 });
