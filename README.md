@@ -1,14 +1,12 @@
 # Quickquiz
-*UNDER DEVELOPMENT* 
+*UNDER DEVELOPMENT*  
+
 A tiny app for creating questionnaires with a focus on delivering the result on an x/y chart
 
 ## Setup    
 
-### Install grunt  
+### Install grunt-cli 
     $ npm install -g grunt-cli  
-
-### Install bower
-    $ npm install -g bower  
 
 ### Install required npm modules
     $ npm install  
