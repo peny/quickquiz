@@ -18,20 +18,25 @@ require.config({
             exports: 'jquery'
         },
         'jquery.slidesjs': ['jquery'],
+        'flat-ui.checkandradio': ['jquery'],
     },
     paths: {
         jquery: '../bower_components/jquery/jquery',
         backbone: '../bower_components/backbone-amd/backbone',
         underscore: '../bower_components/underscore-amd/underscore',
+        bootstrap: 'vendor/bootstrap',
         'jquery.slidesjs': '../bower_components/slidesjs3-bower/source/jquery.slides.min',
-        bootstrap: 'vendor/bootstrap'
+        'flat-ui.checkandradio':  'hacks/custom_checkbox_and_radio',
     }
 });
 
 require([
+    'jquery',
     'backbone',
     'routes/initial-router'
-], function (Backbone, Router) {
-    new Router();
-    Backbone.history.start();
+], function ($, Backbone, Router) {
+    $(function(){
+        new Router();
+        Backbone.history.start();
+    });
 });
