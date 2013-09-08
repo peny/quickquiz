@@ -91,6 +91,14 @@ define([
             return res;
         },
 
+        sendResponse: function(e){
+            var _this = this;
+            e.preventDefault();
+            var result = _this.getResult();
+            //send to server 
+            //generate graph
+        },
+
         render: function(){
             var _this = this;
             var context = {

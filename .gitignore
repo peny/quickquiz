@@ -4,4 +4,5 @@ dist
 .sass-cache
 *.swp
 app/bower_components
+.DS_Store
 .tmp/
