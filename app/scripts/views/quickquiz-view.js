@@ -5,6 +5,7 @@ define([
     'underscore',
     'backbone',
     'templates',
+    'jquery.slidesjs'
 ], function ($, _, Backbone, JST) {
     'use strict';
 
@@ -21,9 +22,15 @@ define([
         render: function(){
             var _this = this;
             var context = {
+                questions: _this.model.questions
             };
             var html = _this.template(context);
             _this.$el.html(html);
+            $(function(){
+            _this.$el.find('.questions').slidesjs({
+              height: 300,
+            });          
+            });
         }
     });
 

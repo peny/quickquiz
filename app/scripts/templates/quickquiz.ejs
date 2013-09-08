@@ -1,2 +1,8 @@
-<p>Your content here.</p>
-
+<h2>Questions</h2>
+<div class="questions">
+    <% for(var i = 0; i < questions.length; i++){ %>
+        <div class="slide">
+        <%= questions[i].text %>
+        </div>
+    <% } %> 
+</div>

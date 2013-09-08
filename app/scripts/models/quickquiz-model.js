@@ -52,6 +52,7 @@ define([
                 ]
             };
             _this.questions.push(question);
+            _this.questions.push(question);
         }
 
     });
