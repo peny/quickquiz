@@ -1,8 +1,37 @@
 <h2>Questions</h2>
-<div class="questions">
+    <div class="span12">
+        <div class="pagination">
+        <ul>
+            <li class="previous">
+                <a class="prev-slide" href="#" title="Next">
+                    <img src="images/previous.png">
+                </a>
+            </li>
+            <% for(var i = 0; i < questions.length; i++){ %>
+                <li class="pagination-button" data-page="<%= i+1 %>">
+                    <a><%= i+1 %></a>
+                </li>
+            <% } %>
+            <li class="next">
+                <a class="next-slide">
+                    <img src="images/next.png">
+                </a>
+            </li>
+        </ul>
+        </div>
+<div class="span12 questions">
     <% for(var i = 0; i < questions.length; i++){ %>
+        <% var question = questions[i]; %>
         <div class="slide">
-        <%= questions[i].text %>
+            <h3><%= question.text %></h3>
+            <span><%= question.help %></span>
+            <div class="answers">
+                <% for(var k = 0; k < question.answers.length; k++){ %>
+                    <label class="radio">
+                        <input type="radio" name="<%= question.id %>" id="" data-xvalue="<%= question.answers[k].x %>" data-yvalue="<%= question.answers[k].y %>" data-zvalue="<%= question.answers[k].z %>" data-toggle="radio">
+                        <%= question.answers[k].text %>
+                    </label>
+                <% } %>
+            </div>
         </div>
     <% } %> 
-</div>
