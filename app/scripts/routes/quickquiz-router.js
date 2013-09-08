@@ -10,6 +10,7 @@ define([
 
     var QuickquizRouter = Backbone.Router.extend({
         routes: {
+            '': 'showQuiz',
             'quiz': 'showQuiz',
             'quiz/:id' : 'showQuiz',
             'quiz/:id/:group': 'showQuiz'
