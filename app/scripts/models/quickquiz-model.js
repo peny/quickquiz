@@ -19,14 +19,19 @@ define([
             _this.id = id || _this.id;
             _this.group = group || _this.group;
             _this.questions = _this.defaults.questions;
-            _this.fillWithTestData();
+            _this.questions.push(_this.generateTestQuestion());
+            _this.questions.push(_this.generateTestQuestion());
+            _this.questions.push(_this.generateTestQuestion());
+            _this.questions.push(_this.generateTestQuestion());
+            _this.questions.push(_this.generateTestQuestion());
         },
 
-        fillWithTestData: function(){
+        generateTestQuestion: function(){
             var _this = this;
             var question = {
                 'text' : 'What color do you like?',
                 'help' : 'By color we mean an RGB value',
+                'id'   : _.uniqueId('question_'),
                 answers : [
                     {
                         'text'  : '0,255,0',
@@ -51,8 +56,7 @@ define([
                     },
                 ]
             };
-            _this.questions.push(question);
-            _this.questions.push(question);
+            return question;
         }
 
     });
