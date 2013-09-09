@@ -1,4 +1,4 @@
-/*global define*/
+/*global define, alert*/
 
 define([
     'jquery',
@@ -22,18 +22,22 @@ define([
         },
 
         events: {
-            'click .next-slide': 'nextSlide',
-            'click .prev-slide': 'prevSlide',
-            'click .pagination-button': 'setPage',
-            'click #send-result-button': 'sendResult'
+            'click .next-slide'         : 'nextSlide',
+            'click .prev-slide'         : 'prevSlide',
+            'click .pagination-button'  : 'setPage',
+            'click #send-result-button' : 'sendResult',
+            'mouseup label.radio'       : 'nextSlide'
         },
 
         nextSlide: function(e){
             var _this = this;
-            if(!$(e.currentTarget).parent().hasClass('disabled')){
-                _this.$el.find('.slidesjs-next').click();
-                _this.setPagination(_this.page+1);
-            }
+            //Looks weird on mobile without this
+            _.delay(function(){
+                if(!$(e.currentTarget).parent().hasClass('disabled')){
+                    _this.$el.find('.slidesjs-next').click();
+                    _this.setPagination(_this.page+1);
+                }
+            },50);
         },
 
         prevSlide: function(e){
@@ -55,13 +59,14 @@ define([
 
         setPagination: function(num){
             var _this = this;
+            console.log(num, _this.page);
             _this.$el.find('.previous').removeClass('disabled');
             _this.$el.find('.next').removeClass('disabled');
             if(num < 1){
                 _this.page = 0;
                 _this.$el.find('.previous').addClass('disabled');
-            } else if(num > _this.model.questions.length){
-                _this.page = _this.model.questions.length+1;
+            } else if(num > _this.model.get('questions').length){
+                _this.page = _this.model.get('questions').length+1;
                 _this.$el.find('.next').addClass('disabled');
             } else {
                 _this.page = num;
@@ -105,11 +110,12 @@ define([
             var _this = this;
             e.preventDefault();
             var result = _this.getResult();
-            var name = _this.getUserData();
-            console.log(name);
-            console.log(result);
-            alert(JSON.stringify(result) + JSON.stringify(name))
-            return result;
+            var user = _this.getUserData();
+            var data = {
+                name: user.name,
+                result: result
+            }
+            _this.model.addCompleted(data);
             //send to server
             //generate graph
         },
@@ -117,7 +123,7 @@ define([
         render: function(){
             var _this = this;
             var context = {
-                questions: _this.model.questions
+                data: _this.model.toJSON()
             };
             var html = _this.template(context);
             _this.$el.html(html);
