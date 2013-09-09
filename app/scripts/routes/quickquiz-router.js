@@ -13,12 +13,13 @@ define([
             '': 'showQuiz',
             'quiz': 'showQuiz',
             'quiz/:id' : 'showQuiz',
+            'quiz/:id/' : 'showQuiz',
             'quiz/:id/:group': 'showQuiz'
         },
 
         showQuiz: function(id,group){
             var _this = this;
-            var model = window.QuickQuizNS.quizzes['id'];
+            var model = window.QuickQuizNS.quizzes[id];
             if(!model){
                 model = new QuickquizModel({id: id, group: group});
             }
