@@ -4,26 +4,25 @@ define([
     'jquery',
     'backbone',
     'models/quickquiz-model',
-    'views/quickquiz-view'
-], function ($, Backbone, QuickquizModel, QuickquizView) {
+    'views/compass-view'
+], function ($, Backbone, QuickquizModel, CompassView) {
     'use strict';
 
-    var QuickquizRouter = Backbone.Router.extend({
+    var CompassRouter = Backbone.Router.extend({
         routes: {
-            '': 'showQuiz',
-            'quiz': 'showQuiz',
-            'quiz/:id' : 'showQuiz',
-            'quiz/:id/:group': 'showQuiz'
+            'compass': 'showCompass',
+            'compass/:id': 'showCompass',
+            'quiz/:id/result' : 'showCompass',
         },
 
-        showQuiz: function(id,group){
+        showCompass: function(id,group){
             var _this = this;
             var model = window.QuickQuizNS.quizzes['id'];
             if(!model){
                 model = new QuickquizModel({id: id, group: group});
             }
             _this.renderBase().
-            renderQuiz(model);
+            renderCompass(model);
             return _this;
         },
 
@@ -32,14 +31,14 @@ define([
             return _this;
         },
 
-        renderQuiz: function(quiz){
+        renderCompass: function(quiz){
             var _this = this;
-            var quickquizview = new QuickquizView(quiz);
-            quickquizview.render();
+            var compassview = new CompassView(quiz);
+            compassview.render();
             return _this;
         }
 
     });
 
-    return QuickquizRouter;
+    return CompassRouter;
 });
