@@ -27,7 +27,7 @@ define([
         },
 
         generateTestQuestion: function(){
-            var _this = this;
+            //var _this = this;
             var question = {
                 'text' : 'What color do you like?',
                 'help' : 'By color we mean an RGB value',
@@ -58,7 +58,6 @@ define([
             };
             return question;
         }
-
     });
 
     return QuickquizModel;

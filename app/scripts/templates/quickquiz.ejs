@@ -7,7 +7,7 @@
                     <img src="images/previous.png">
                 </a>
             </li>
-            <% for(var i = 0; i < questions.length; i++){ %>
+            <% for(var i = 0; i < questions.length+2; i++){ %>
                 <li class="pagination-button" data-page="<%= i+1 %>">
                     <a><%= i+1 %></a>
                 </li>
@@ -20,6 +20,9 @@
         </ul>
         </div>
 <div class="span12 questions">
+    <div class="slide">
+        <input type="text" placeholder="Name" class="span3">
+    </div>
     <% for(var i = 0; i < questions.length; i++){ %>
         <% var question = questions[i]; %>
         <div class="slide">
@@ -35,3 +38,7 @@
             </div>
         </div>
     <% } %> 
+    <div class="slide">
+        <button class="btn btn-large btn-success">Get Result!</button>
+    </div>
+</div>
