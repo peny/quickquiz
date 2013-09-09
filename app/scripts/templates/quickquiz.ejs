@@ -21,7 +21,7 @@
         </div>
 <div class="span12 questions">
     <div class="slide">
-        <input type="text" placeholder="Name" class="span3">
+        <input type="text" id="user-first-name" placeholder="Name" class="quiz-name span3">
     </div>
     <% for(var i = 0; i < questions.length; i++){ %>
         <% var question = questions[i]; %>
@@ -39,6 +39,6 @@
         </div>
     <% } %> 
     <div class="slide">
-        <button class="btn btn-large btn-success">Get Result!</button>
+        <button id="send-result-button" class="btn btn-large btn-success">Get Result!</button>
     </div>
 </div>
