@@ -38,7 +38,6 @@ require([
     $(function(){
         window.QuickQuizNS = {};
         window.QuickQuizNS.quizzes = [];
-        console.log(window.QuickQuizNS)
         window.QuickQuizNS.Router = new Router();
         Backbone.history.start();
     });
