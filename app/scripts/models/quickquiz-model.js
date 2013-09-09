@@ -11,19 +11,22 @@ define([
         defaults: {
             id: 0,
             group: 0,
-            questions: []
+            questions: [],
+            completed: []
         },
 
-        initialize: function(id, group){
+        initialize: function(){
             var _this = this;
-            _this.id = id || _this.id;
-            _this.group = group || _this.group;
-            _this.questions = _this.defaults.questions;
-            _this.questions.push(_this.generateTestQuestion());
-            _this.questions.push(_this.generateTestQuestion());
-            _this.questions.push(_this.generateTestQuestion());
-            _this.questions.push(_this.generateTestQuestion());
-            _this.questions.push(_this.generateTestQuestion());
+            _this.get('questions').push(_this.generateTestQuestion());
+            _this.get('questions').push(_this.generateTestQuestion());
+            _this.get('questions').push(_this.generateTestQuestion());
+            window.QuickQuizNS.quizzes[_this.get('id')] = _this;
+        },
+
+        addCompleted: function(data){
+            var _this = this;
+            console.log(_this);
+            _this.get('completed').push(data);
         },
 
         generateTestQuestion: function(){
@@ -50,8 +53,8 @@ define([
                     {
                         'text'  : '0,0,255',
                         'help'  : 'Blue',
-                        'x'     : 1,
-                        'y'     : 0,
+                        'x'     : 20,
+                        'y'     : 20,
                         'z'     : 1
                     },
                 ]
