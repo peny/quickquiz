@@ -36,6 +36,9 @@ require([
     'routes/initial-router'
 ], function ($, Backbone, Router) {
     $(function(){
+        window.QuickQuizNS = {};
+        window.QuickQuizNS.quizzes = [];
+        console.log(window.QuickQuizNS)
         new Router();
         Backbone.history.start();
     });
