@@ -16,8 +16,8 @@ define([
         initialize: function(model){
             var _this = this;
             _this.model = model;
-            _this.canvas;
-            _this.context;
+            _this.canvas = {};
+            _this.context = {};
         },
 
         events: {

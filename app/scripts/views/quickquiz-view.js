@@ -1,4 +1,4 @@
-/*global define, alert*/
+/*global define*/
 
 define([
     'jquery',
@@ -114,7 +114,7 @@ define([
             var data = {
                 name: user.name,
                 result: result
-            }
+            };
             _this.model.addCompleted(data);
             window.QuickQuizNS.Router.navigate('/quiz/'+_this.model.get('id')+'/result', {trigger: true});
             //send to server
