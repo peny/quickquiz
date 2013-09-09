@@ -87,7 +87,7 @@ define([
                 res.z += $(answer).data('zvalue');
             });
 
-            //Return the calculated x,y,z 
+            //Return the calculated x,y,z
             return res;
         },
 
@@ -96,7 +96,7 @@ define([
             e.preventDefault();
             var result = _this.getResult();
             return result;
-            //send to server 
+            //send to server
             //generate graph
         },
 
@@ -110,7 +110,7 @@ define([
             //This is needed
             $(function(){
                 _this.$el.find('.questions').slidesjs({
-                    height: 300,
+                    height: 500,
                     navigation: {
                         active: true,
                         effect: 'slide'
