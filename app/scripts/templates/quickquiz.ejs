@@ -7,7 +7,7 @@
                     <img src="images/previous.png">
                 </a>
             </li>
-            <% for(var i = 0; i < questions.length+2; i++){ %>
+            <% for(var i = 0; i < data.questions.length+2; i++){ %>
                 <li class="pagination-button hidden-phone" data-page="<%= i+1 %>">
                     <a><%= i+1 %></a>
                 </li>
@@ -23,8 +23,8 @@
     <div class="slide">
         <input type="text" id="user-first-name" placeholder="Name" class="quiz-name span3">
     </div>
-    <% for(var i = 0; i < questions.length; i++){ %>
-        <% var question = questions[i]; %>
+    <% for(var i = 0; i < data.questions.length; i++){ %>
+        <% var question = data.questions[i]; %>
         <div class="slide">
             <h3><%= question.text %></h3>
             <span><%= question.help %></span>
