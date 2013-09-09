@@ -116,6 +116,7 @@ define([
                 result: result
             }
             _this.model.addCompleted(data);
+            window.QuickQuizNS.Router.navigate('/quiz/'+_this.model.get('id')+'/result', {trigger: true});
             //send to server
             //generate graph
         },
