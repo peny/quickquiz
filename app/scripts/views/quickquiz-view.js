@@ -24,7 +24,8 @@ define([
         events: {
             'click .next-slide': 'nextSlide',
             'click .prev-slide': 'prevSlide',
-            'click .pagination-button': 'setPage'
+            'click .pagination-button': 'setPage',
+            'click #send-result-button': 'sendResult'
         },
 
         nextSlide: function(e){
@@ -54,7 +55,6 @@ define([
 
         setPagination: function(num){
             var _this = this;
-            _this.getScore();
             _this.$el.find('.previous').removeClass('disabled');
             _this.$el.find('.next').removeClass('disabled');
             if(num < 1){
@@ -71,7 +71,7 @@ define([
             $($paginationItems[_this.page]).addClass('active');
         },
 
-        getScore: function(){
+        getResult: function(){
             var _this = this;
             var $answers = _this.$el.find('.slide').find('.answers').find('label.radio.checked').find('input');
 
@@ -91,10 +91,24 @@ define([
             return res;
         },
 
-        sendResponse: function(e){
+        getUserData: function(){
+            var _this = this;
+            var firstName = _this.$el.find('#user-first-name').val();
+            var data = {
+                name: firstName
+            };
+            return data;
+
+        },
+
+        sendResult: function(e){
             var _this = this;
             e.preventDefault();
             var result = _this.getResult();
+            var name = _this.getUserData();
+            console.log(name);
+            console.log(result);
+            alert(JSON.stringify(result) + JSON.stringify(name))
             return result;
             //send to server
             //generate graph
