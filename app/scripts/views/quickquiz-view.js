@@ -52,14 +52,12 @@ define([
             var _this = this;
             var newPage = $(e.currentTarget).data('page');
             var paginationItems = _this.$el.find('.slidesjs-pagination').children();
-            console.log(paginationItems[newPage-1]);
             $($(paginationItems[newPage-1])).find('a').click();
             _this.setPagination(newPage-1);
         },
 
         setPagination: function(num){
             var _this = this;
-            console.log(num, _this.page);
             _this.$el.find('.previous').removeClass('disabled');
             _this.$el.find('.next').removeClass('disabled');
             if(num < 1){
@@ -103,7 +101,6 @@ define([
                 name: firstName
             };
             return data;
-
         },
 
         sendResult: function(e){
@@ -116,7 +113,7 @@ define([
                 result: result
             };
             _this.model.addCompleted(data);
-            window.QuickQuizNS.Router.navigate('/quiz/'+_this.model.get('id')+'/result', {trigger: true});
+            window.QuickQuizNS.Router.navigate('/quiz/'+_this.model.get('quizid')+'/result', {trigger: true});
             //send to server
             //generate graph
         },

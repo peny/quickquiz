@@ -33,11 +33,12 @@ require.config({
 require([
     'jquery',
     'backbone',
-    'routes/initial-router'
-], function ($, Backbone, Router) {
+    'routes/initial-router',
+    'collections/quickquiz-collection'
+], function ($, Backbone, Router, QuickQuizCollection) {
     $(function(){
         window.QuickQuizNS = {};
-        window.QuickQuizNS.quizzes = [];
+        window.QuickQuizNS.quizzes = new QuickQuizCollection();
         window.QuickQuizNS.Router = new Router();
         Backbone.history.start();
     });

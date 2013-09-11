@@ -19,9 +19,9 @@ define([
 
         showQuiz: function(id,group){
             var _this = this;
-            var model = window.QuickQuizNS.quizzes[id];
+            var model = window.QuickQuizNS.quizzes.findWhere({quizid: id});
             if(!model){
-                model = new QuickquizModel({id: id, group: group});
+                model = new QuickquizModel({quizid: id, group: group});
             }
             _this.renderBase().
             renderQuiz(model);
