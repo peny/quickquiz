@@ -1,9 +1,10 @@
 /*global define*/
 
 define([
+    'jquery',
     'underscore',
     'backbone',
-], function (_, Backbone) {
+], function ($, _, Backbone) {
     'use strict';
 
     var QuickquizModel = Backbone.Model.extend({
@@ -16,10 +17,18 @@ define([
         initialize: function(){
             var _this = this;
             _this.set({questions: [], completed: []});
-            _this.get('questions').push(_this.generateTestQuestion());
-            _this.get('questions').push(_this.generateTestQuestion());
-            _this.get('questions').push(_this.generateTestQuestion());
-            window.QuickQuizNS.quizzes.add(_this);
+            $.ajax({
+                type: 'GET',
+                url: '/questions.json',
+                dataType: 'json',
+            }).done(function(json){
+                _.each(json,function(question){
+                    _this.get('questions').push(question);
+                });
+                window.QuickQuizNS.quizzes.add(_this);
+            }).fail(function(err){
+                console.log('error: '+JSON.stringify(err));
+            });
         },
 
         addCompleted: function(data){
