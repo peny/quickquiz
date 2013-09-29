@@ -23,9 +23,12 @@ define([
             if(!model){
                 model = new QuickquizModel({quizid: id, group: group});
             }
-            _this.renderBase().
-            renderQuiz(model);
-            return _this;
+            model.getQuestions(null,function(){
+                console.log('got questions, rendering..');
+                _this.renderBase().
+                renderQuiz(model);
+                return _this;
+            });
         },
 
         renderBase: function(){
