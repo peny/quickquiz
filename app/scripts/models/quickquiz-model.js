@@ -15,17 +15,27 @@ define([
         },
 
         initialize: function(){
+
             var _this = this;
             _this.set({questions: [], completed: []});
+        },
+
+        getQuestions: function(id,callback){
+            var _this = this;
+            var url = '/questions.json';
+            if(id){
+                url = id;
+            }
             $.ajax({
                 type: 'GET',
-                url: '/questions.json',
+                url: url,
                 dataType: 'json',
             }).done(function(json){
                 _.each(json,function(question){
                     _this.get('questions').push(question);
                 });
                 window.QuickQuizNS.quizzes.add(_this);
+                callback(null);
             }).fail(function(err){
                 console.log('error: '+JSON.stringify(err));
             });
