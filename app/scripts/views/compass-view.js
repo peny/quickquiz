@@ -56,7 +56,7 @@ define([
             _this.draw2DCompass();
 
             var canvasHeight = $(_this.canvas).height();
-            var canvasWidth = $(_this.canvas).width();
+            //var canvasWidth = $(_this.canvas).width();
 
             _.each(_this.model.get('completed'),function(completed){
                 var canvasX = completed.result.x*6.66;
