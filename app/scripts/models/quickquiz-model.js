@@ -34,11 +34,34 @@ define([
                 _.each(json,function(question){
                     _this.get('questions').push(question);
                 });
+                getResults(function(){});
                 window.QuickQuizNS.quizzes.add(_this);
                 callback(null);
             }).fail(function(err){
                 console.log('error: '+JSON.stringify(err));
             });
+        },
+
+        getResults: function(callback){
+            var _this = this;
+            var url = '/result';
+            if(id){
+                url = id;
+            }
+            $.ajax({
+                type: 'GET',
+                url: url,
+                dataType: 'json',
+                data: { group: _this.group },
+            }).done(function(json){
+                _.each(json,function(result){
+                    _this.addCompleted(result);
+                });
+                callback(null);
+            }).fail(function(err){
+                console.log('error: '+JSON.stringify(err));
+            });
+
         },
 
         addCompleted: function(data){
