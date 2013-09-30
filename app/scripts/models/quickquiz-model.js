@@ -49,9 +49,10 @@ define([
                 type: 'GET',
                 url: url,
                 dataType: 'json',
-                data: { group: _this.group },
+                data: { group: _this.get('quizid') },
             }).done(function(json){
                 _.each(json,function(result){
+                    console.log(result);
                     _this.get('completed').push({
                         name: result.name,
                         result: {
@@ -72,12 +73,14 @@ define([
 
             _this.get('completed').push(data);
 
+            console.log(_this,data);
+
             var flatData = {
                 name    : data.name,
-                group   : _this.group,
-                x       : data.x,
-                y       : data.y,
-                z       : data.z
+                group   : _this.get('quizid'),
+                x       : data.result.x,
+                y       : data.result.y,
+                z       : data.result.z
             };
 
             var url = '/result';
@@ -86,7 +89,7 @@ define([
                 url: url,
                 dataType: 'json',
                 data: flatData,
-            }).done(function(json){
+            }).done(function(){
             }).fail(function(err){
                 console.log('error: '+JSON.stringify(err));
             });
