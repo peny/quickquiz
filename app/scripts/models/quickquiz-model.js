@@ -34,7 +34,7 @@ define([
                 _.each(json,function(question){
                     _this.get('questions').push(question);
                 });
-                getResults(function(){});
+                _this.getResults(function(){});
                 window.QuickQuizNS.quizzes.add(_this);
                 callback(null);
             }).fail(function(err){
@@ -45,9 +45,6 @@ define([
         getResults: function(callback){
             var _this = this;
             var url = '/result';
-            if(id){
-                url = id;
-            }
             $.ajax({
                 type: 'GET',
                 url: url,
@@ -61,7 +58,6 @@ define([
             }).fail(function(err){
                 console.log('error: '+JSON.stringify(err));
             });
-
         },
 
         addCompleted: function(data){
