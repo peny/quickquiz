@@ -27,13 +27,13 @@ define([
             var _this = this;
             var width = _this.canvas.width;
             var height = _this.canvas.height;
-            _this.context.fillStyle = 'rgb(200,255,200)';
+            _this.context.fillStyle = 'rgb(245,250,245)';
             _this.context.fillRect(0,0,width/2,height/2);
-            _this.context.fillStyle = 'rgb(200,200,255)';
+            _this.context.fillStyle = 'rgb(245,245,250)';
             _this.context.fillRect(width/2,height/2, width/2, height/2);
-            _this.context.fillStyle = 'rgb(255,255,200)';
+            _this.context.fillStyle = 'rgb(250,250,245)';
             _this.context.fillRect(width/2,0,width/2,height/2);
-            _this.context.fillStyle = 'rgb(255,200,200)';
+            _this.context.fillStyle = 'rgb(250,245,245)';
             _this.context.fillRect(0,height/2,width/2,height/2);
             return _this;
         },
