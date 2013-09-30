@@ -21,9 +21,11 @@ define([
             if(!model){
                 model = new QuickquizModel({quizid: id, group: group});
             }
-            _this.renderBase().
-            renderCompass(model);
-            return _this;
+            model.getResults(function(){
+                _this.renderBase().
+                renderCompass(model);
+                return _this;
+            });
         },
 
         renderBase: function(){
