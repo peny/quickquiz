@@ -54,8 +54,15 @@ define([
             _this.canvas = _this.$el.find('#compass-canvas')[0];
             _this.context = _this.canvas.getContext('2d');
             _this.draw2DCompass();
+
+            var canvasHeight = $(_this.canvas).height();
+            var canvasWidth = $(_this.canvas).width();
+
             _.each(_this.model.get('completed'),function(completed){
-                _this.draw2DPoint(completed.name,completed.result.x,completed.result.y);
+                var canvasX = completed.result.x*6.66;
+                var canvasY = completed.result.y*6.66;
+                console.log(canvasX,canvasY);
+                _this.draw2DPoint(completed.name,canvasX,canvasHeight-canvasY);
             });
         }
     });
