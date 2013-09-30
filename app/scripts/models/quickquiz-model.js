@@ -52,7 +52,14 @@ define([
                 data: { group: _this.group },
             }).done(function(json){
                 _.each(json,function(result){
-                    _this.addCompleted(result);
+                    _this.get('completed').push({
+                        name: result.name,
+                        result: {
+                            x : result.x,
+                            y : result.y,
+                            z : result.z
+                        }
+                    });
                 });
                 callback(null);
             }).fail(function(err){
@@ -64,6 +71,25 @@ define([
             var _this = this;
 
             _this.get('completed').push(data);
+
+            var flatData = {
+                name    : data.name,
+                group   : _this.group,
+                x       : data.x,
+                y       : data.y,
+                z       : data.z
+            };
+
+            var url = '/result';
+            $.ajax({
+                type: 'POST',
+                url: url,
+                dataType: 'json',
+                data: flatData,
+            }).done(function(json){
+            }).fail(function(err){
+                console.log('error: '+JSON.stringify(err));
+            });
         },
 
         generateTestQuestion: function(){
