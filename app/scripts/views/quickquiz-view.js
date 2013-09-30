@@ -128,7 +128,7 @@ define([
             //This is needed
             $(function(){
                 _this.$el.find('.questions').slidesjs({
-                    height: 500,
+                    height: 1000,
                     navigation: {
                         active: true,
                         effect: 'slide'

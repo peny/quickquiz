@@ -2,6 +2,11 @@
 @import 'sass-bootstrap/lib/responsive';
 @import 'flat-ui/sass/flat-ui';
 
+.slidesjs-container {
+    width: 100%;
+    height: 800px;
+}
+
 .slidesjs-navigation {
     display: none;
 }
