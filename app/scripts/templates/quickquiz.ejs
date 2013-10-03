@@ -8,7 +8,7 @@
                 </a>
             </li>
             <% for(var i = 0; i < data.questions.length+2; i++){ %>
-                <li class="pagination-button hidden-phone" data-page="<%= i+1 %>">
+                <li class="pagination-button hidden-phone" style="display: none;" data-page="<%= i+1 %>">
                     <a><%= i+1 %></a>
                 </li>
             <% } %>
@@ -26,7 +26,7 @@
     <% for(var i = 0; i < data.questions.length; i++){ %>
         <% var question = data.questions[i]; %>
         <div class="slide">
-            <h3><%= question.text %></h3>
+            <h4><%= question.text %></h4>
             <span><%= question.help %></span>
             <div class="answers">
                 <% for(var k = 0; k < question.answers.length; k++){ %>
