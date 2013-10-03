@@ -13,6 +13,7 @@ define([
             'compass': 'showCompass',
             'compass/:id': 'showCompass',
             'quiz/:id/result' : 'showCompass',
+            'compare',
         },
 
         showCompass: function(id,group){
