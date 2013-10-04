@@ -4,8 +4,9 @@ define([
     'jquery',
     'backbone',
     'models/quickquiz-model',
-    'views/quickquiz-view'
-], function ($, Backbone, QuickquizModel, QuickquizView) {
+    'views/quickquiz-view',
+    'views/upload-view'
+], function ($, Backbone, QuickquizModel, QuickquizView, UploadView) {
     'use strict';
 
     var QuickquizRouter = Backbone.Router.extend({
@@ -13,6 +14,7 @@ define([
             '': 'showQuiz',
             'quiz': 'showQuiz',
             'quiz/:id' : 'showQuiz',
+            'quiz/:id/upload' : 'renderUpload',
             'quiz/:id/' : 'showQuiz',
             'quiz/:id/:group': 'showQuiz'
         },
@@ -29,6 +31,13 @@ define([
                 renderQuiz(model);
                 return _this;
             });
+        },
+
+        renderUpload: function(id){
+            var _this = this;
+            var uploadView = new UploadView();
+            uploadView.render(id);
+            return _this;
         },
 
         renderBase: function(){
