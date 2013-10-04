@@ -4,7 +4,9 @@ define([
     'jquery',
     'underscore',
     'backbone',
-], function ($, _, Backbone) {
+    'models/answer-model',
+    'collections/answer-collection',
+], function ($, _, Backbone, AnswerModel, AnswerCollection) {
     'use strict';
 
     var QuickquizModel = Backbone.Model.extend({
@@ -17,7 +19,8 @@ define([
         initialize: function(){
 
             var _this = this;
-            _this.set({questions: [], completed: []});
+            var completed = new AnswerCollection();
+            _this.set({questions: [], completed: completed});
         },
 
         getQuestions: function(id,callback){
@@ -52,15 +55,18 @@ define([
                 data: { group: _this.get('quizid') },
             }).done(function(json){
                 _.each(json,function(result){
-                    console.log(result);
-                    _this.get('completed').push({
+
+                    console.log(json,result);
+                    var completed = new AnswerModel({
                         name: result.name,
+                        imageurl: result.imageurl,
                         result: {
                             x : result.x,
                             y : result.y,
                             z : result.z
                         }
                     });
+                    _this.get('completed').add(completed);
                 });
                 callback(null);
             }).fail(function(err){
@@ -71,9 +77,8 @@ define([
         addCompleted: function(data){
             var _this = this;
 
-            _this.get('completed').push(data);
-
-            console.log(_this,data);
+            var completed = new AnswerModel(data);
+            _this.get('completed').add(completed);
 
             var flatData = {
                 name    : data.name,
